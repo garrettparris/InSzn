@@ -109,11 +109,10 @@ class App extends Component {
       
       <div>
         <NavBar />
-        <div className="mx-auto">
+        <div className="mx-auto mt-5">
           <Header />
-          <div className="mt-5 mx-auto"><MonthCarousel /></div>
-          
-          <div className="mt-5"><TableView /></div>
+          <div className="mt-5 mx-auto w-25"><MonthCarousel /></div>
+          <div className="mt-5 mx-auto w-50"><TableView /></div>
         </div>
       </div>
     );

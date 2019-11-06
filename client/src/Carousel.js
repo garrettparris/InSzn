@@ -2,13 +2,29 @@ import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel'
 
 class MonthCarousel extends React.Component{
+    constructor(props) {
+        super(props)
+        this.state = {
+          index: new Date().getMonth(),
+          direction: null
+        }
     
+        // Bind callback methods to make `this` the correct context.
+        this.handleSelect = this.handleSelect.bind(this)
+    
+      }
+    
+      handleSelect(selectedIndex, e) {
+        this.setState({
+          index: selectedIndex,
+          direction: e.direction
+        })
+      }
     render(){
- 
         return(
-            <Carousel interval = {null}>
-                <Carousel.Item>
-                    <div className="mx-auto d-block w-100">January</div>
+            <Carousel interval = {null} className="mx-auto text-center" activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect}>
+                <Carousel.Item className="mx-auto">
+                    <div>January</div>
                     <Carousel.Caption>
                     <h3>January</h3>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>

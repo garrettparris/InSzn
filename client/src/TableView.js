@@ -7,26 +7,20 @@ class TableView extends React.Component{
         return(
             <Row className="justify-content-md-center">
                 <Col xs={12} md={8}>
-                    <Table responsive >
+                    <Table responsive className="mx-auto text-center">
                         <thead>
                             <tr>
-                            <th>Table heading</th>
                             <th>Table heading</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                             <td>Table cell</td>
-                            <td>Table cell</td>
                             </tr>
                             <tr>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
+                                <td>ceell1</td>
                             </tr>
-                            <tr>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            </tr>
+                           
                         </tbody>
                     </Table>
                 </Col>
