@@ -4,7 +4,7 @@ import axios from 'axios';
 import NavBar from './NavBar';
 import TableView from './TableView'
 import Header from './Header'
-
+import MonthCarousel from './Carousel'
 class App extends Component {
   // initialize our state
   state = {
@@ -109,8 +109,12 @@ class App extends Component {
       
       <div>
         <NavBar />
-        <Header />
-        <TableView />
+        <div className="mx-auto">
+          <Header />
+          <div className="mt-5 mx-auto"><MonthCarousel /></div>
+          
+          <div className="mt-5"><TableView /></div>
+        </div>
       </div>
     );
   }

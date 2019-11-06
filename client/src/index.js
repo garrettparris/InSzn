@@ -6,7 +6,7 @@ import App from './App';
 import NavBar from './NavBar';
 import TableView from './TableView'
 import Header from './Header'
-
+import MonthCarousel from './Carousel'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
