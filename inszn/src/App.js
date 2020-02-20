@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header.js'
-
+import Header from './components/Header.js';
+import ResponsiveDrawer from './components/Drawer.js';
+import CarouselTable from './components/CarouselTable.js';
 function App() {
   return (
     <div className="App">
-      <Header />
-      lol
+      <ResponsiveDrawer />
+      <div className="mx-auto mt-5">
+
+          <div className="mt-5 mx-auto w-25"><Header /></div>
+          <div className="mt-5 mx-auto w-50"><CarouselTable /></div>
+      </div>
     </div>
   );
 }
