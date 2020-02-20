@@ -21,19 +21,11 @@ class SimpleTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            month: props.index,
+            month: this.props.index,
             apiResponse: "",
         };
     }
-    callAPI() {
-        fetch("http://localhost:9000/testAPI")
-            .then(res => res.text())
-            .then(res => this.setState({ apiResponse: res }));
-    }
     
-    componentWillMount() {
-        this.callAPI();
-    }
     render() {
         return (
             <div>
@@ -51,7 +43,7 @@ class SimpleTable extends Component {
                 </Table>
                 </TableContainer>
                 <div>MONTH:{this.props.index + 1}</div>
-                <div>RESPONSE:{this.state.apiResponse}</div>
+                <div>RESPONSE:{this.props.apiResponse}</div>
             </div>
         )
     }

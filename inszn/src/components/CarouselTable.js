@@ -6,8 +6,9 @@ class CarouselTable extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-          index: new Date().getMonth(),
-          direction: null
+            index: new Date().getMonth(),
+            direction: null,
+            apiResponse: ""
         }
     
         // Bind callback methods to make `this` the correct context.
@@ -17,11 +18,22 @@ class CarouselTable extends React.Component{
     
       handleSelect(selectedIndex, e) {
         this.setState({
-          index: selectedIndex,
-          direction: e.direction
+            index: selectedIndex,
+            direction: e.direction,
+            apiResponse: "" 
         })
+        this.callAPI()
+    }
+    callAPI() {
+        var url = "http://localhost:9000/api/".concat(this.state.index+1)
+        fetch(url)
+            .then(res => res.text())
+            .then(res => this.setState({ apiResponse: res }));
     }
     
+    componentWillMount() {
+        this.callAPI();
+    }
     render(){
         return (
             <div>
