@@ -43,7 +43,7 @@ class SimpleTable extends Component {
                 </Table>
                 </TableContainer>
                 <div>MONTH:{this.props.index + 1}</div>
-                <div>RESPONSE:{this.props.apiResponse}</div>
+                <div>RESPONSE:{JSON.stringify(this.props.apiResponse)}</div>
             </div>
         )
     }

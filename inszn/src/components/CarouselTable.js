@@ -20,9 +20,17 @@ class CarouselTable extends React.Component{
         this.setState({
             index: selectedIndex,
             direction: e.direction,
-            apiResponse: "" 
+            apiResponse: "", 
+            names: []
         })
-        this.callAPI()
+          this.callAPI()
+        
+    }
+
+    parseJson() {
+        var names = this.state.apiResponse
+        names = JSON.parse(names)
+
     }
     callAPI() {
         var url = "http://localhost:9000/api/".concat(this.state.index+1)
