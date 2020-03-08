@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel'
 import SimpleTable from './Table.js'
-
+import Skeleton from '@material-ui/lab/Skeleton';
+import axios from 'axios'
 
 class CarouselTable extends React.Component{
     constructor(props) {
@@ -13,6 +14,8 @@ class CarouselTable extends React.Component{
             direction: null,
             apiResponse: "",
             collection: "",
+            names: [],
+            isDone: false
         }
     
         this.handleSelect = this.handleSelect.bind(this)
@@ -30,11 +33,12 @@ class CarouselTable extends React.Component{
             direction: e.direction,
         })
           this.callAPI()
-        
+
     }
 
     handleTypeSelect(selectedIndex, e) {
         this.setState({
+            
             typeIndex: selectedIndex,
             typeDirection: e.direction,
         })
@@ -43,14 +47,41 @@ class CarouselTable extends React.Component{
     }
 
     callAPI() {
-        var url = "http://localhost:4000/api/" + (this.state.index+1) + "/" + this.typeValues[this.state.typeIndex]
-        fetch(url)
-            .then(res => res.text())
-            .then(res => this.setState({ apiResponse: res }));
+        try {
+            var url = "http://ec2-52-14-94-175.us-east-2.compute.amazonaws.com:3000/api/" + (this.state.index+1) + "/" + this.typeValues[this.state.typeIndex]
+
+            axios.get(url)
+                .then(res => {
+                    console.log(res.data);
+                    this.handleResponse(res.data);
+                })
+                
+
+        } catch (err) {
+            console.error(err)
+        }
+        
     }
     
     componentWillMount() {
         this.callAPI();
+    }
+
+    handleResponse(data) {
+        try {
+            let temp = []
+            data.forEach(i => {
+                temp.push(i.name)
+            });
+            temp.sort()
+            this.setState({
+                names: temp
+            })
+
+        } catch (err) {
+            console.error(err)
+        }
+        
     }
     render(){
         return (
@@ -58,75 +89,51 @@ class CarouselTable extends React.Component{
             <Carousel interval = {null} className="mx-auto text-center" activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect}>
                 <Carousel.Item className="mx-auto">
                     <div>January</div>
-                    <Carousel.Caption>
-                    <h3>January</h3>
-                    </Carousel.Caption>
+                    
                 </Carousel.Item>
                 <Carousel.Item>
                     February
-                    <Carousel.Caption>
-                    <h3>February</h3>
-                    </Carousel.Caption>
+                    
                 </Carousel.Item>
                 <Carousel.Item>
                     March
-                    <Carousel.Caption>
-                    <h3>March</h3>
-                    </Carousel.Caption>
+                    
                 </Carousel.Item>
                 <Carousel.Item>
                     April
-                    <Carousel.Caption>
-                    <h3>April</h3>
-                    </Carousel.Caption>
+                    
                 </Carousel.Item>
                 <Carousel.Item>
                     May
-                    <Carousel.Caption>
-                    <h3>May</h3>
-                    </Carousel.Caption>
+                    
                 </Carousel.Item>
                 <Carousel.Item>
                     June
-                    <Carousel.Caption>
-                    <h3>June</h3>
-                    </Carousel.Caption>
+                    
                 </Carousel.Item>
                 <Carousel.Item>
                     July
-                    <Carousel.Caption>
-                    <h3>July</h3>
-                    </Carousel.Caption>
+                    
                 </Carousel.Item>
                 <Carousel.Item>
                     August
-                    <Carousel.Caption>
-                    <h3>August</h3>
-                    </Carousel.Caption>
+                    
                 </Carousel.Item>
                 <Carousel.Item>
                     September
-                    <Carousel.Caption>
-                    <h3>September</h3>
-                    </Carousel.Caption>
+                    
                 </Carousel.Item>
                 <Carousel.Item>
                     October
-                    <Carousel.Caption>
-                    <h3>October</h3>
-                    </Carousel.Caption>
+                    
                 </Carousel.Item>
                 <Carousel.Item>
                     November
-                    <Carousel.Caption>
-                    <h3>November</h3>
-                    </Carousel.Caption>
+                   
                 </Carousel.Item>
                 <Carousel.Item>
                     December
-                    <Carousel.Caption>
-                    <h3>December</h3>
-                    </Carousel.Caption>
+                    
                 </Carousel.Item>
                 </Carousel>
                 <Carousel interval = {null} className="mx-auto text-center w-50 mt-5" activeIndex={this.state.typeIndex} direction={this.state.typeDirection} onSelect={this.handleTypeSelect}>
@@ -144,8 +151,13 @@ class CarouselTable extends React.Component{
                     </Carousel.Item>
 
                 </Carousel>
-
+                { this.state.names ? (
                 <SimpleTable {...this.state}></SimpleTable>
+
+                ) : (
+                          <Skeleton variant="rect" width={210} height={118} />
+
+                )}
             </div>
             
 

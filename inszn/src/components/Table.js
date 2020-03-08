@@ -6,17 +6,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-  
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ];
+
 class SimpleTable extends Component {
     constructor(props) {
         super(props);
@@ -26,24 +16,24 @@ class SimpleTable extends Component {
         };
     }
     
+    
+
     render() {
         return (
             <div>
                 <TableContainer>
                 <Table aria-label="simple table">
                     <TableBody>
-                    {rows.map(row => (
-                        <TableRow key={row.name}>
+                    {this.props.names.map(row => (
+                        <TableRow key={row}>
                         <TableCell component="th" scope="row">
-                            {row.name}
+                            {row}
                         </TableCell>
                         </TableRow>
                     ))}
                     </TableBody>
                 </Table>
-                </TableContainer>
-                <div>MONTH:{this.props.index + 1}</div>
-                <div>RESPONSE:{this.props.apiResponse}</div>
+                </TableContainer>                
             </div>
         )
     }
