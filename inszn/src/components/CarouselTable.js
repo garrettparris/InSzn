@@ -86,8 +86,8 @@ class CarouselTable extends React.Component{
     render(){
         return (
             <div>
-            <Carousel interval = {null} className="mx-auto text-center" activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect}>
-                <Carousel.Item className="mx-auto">
+                <Carousel interval={null} className="mx-auto text-center" activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect} indicators={false}>
+                <Carousel.Item>
                     <div>January</div>
                     
                 </Carousel.Item>
@@ -136,7 +136,7 @@ class CarouselTable extends React.Component{
                     
                 </Carousel.Item>
                 </Carousel>
-                <Carousel interval = {null} className="mx-auto text-center w-50 mt-5" activeIndex={this.state.typeIndex} direction={this.state.typeDirection} onSelect={this.handleTypeSelect}>
+                <Carousel interval = {null} className="mx-auto text-center w-50 mt-5" controls="true" indicators = "false" activeIndex={this.state.typeIndex} direction={this.state.typeDirection} onSelect={this.handleTypeSelect} indicators={false}>
                     <Carousel.Item className="mx-auto">
                         <div>Fruits</div>
                         
@@ -151,13 +151,15 @@ class CarouselTable extends React.Component{
                     </Carousel.Item>
 
                 </Carousel>
+                <div className="mx-auto mt-3 mb-5 w-50">
                 { this.state.names ? (
                 <SimpleTable {...this.state}></SimpleTable>
 
                 ) : (
-                          <Skeleton variant="rect" width={210} height={118} />
+                          <Skeleton variant="rect" className="mx-auto"/>
 
-                )}
+                        )}
+                </div>
             </div>
             
 

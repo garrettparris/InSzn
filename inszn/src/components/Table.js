@@ -6,7 +6,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+const mystyle = {color: 'white'}
 class SimpleTable extends Component {
     constructor(props) {
         super(props);
@@ -23,11 +23,11 @@ class SimpleTable extends Component {
             <div>
                 <TableContainer>
                 <Table aria-label="simple table">
-                    <TableBody>
+                        <TableBody className="color:white">
                     {this.props.names.map(row => (
                         <TableRow key={row}>
-                        <TableCell component="th" scope="row">
-                            {row}
+                            <TableCell component="th" scope="row" className="mx-auto text-center" style={mystyle} >
+                            {row }
                         </TableCell>
                         </TableRow>
                     ))}

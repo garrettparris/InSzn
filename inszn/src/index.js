@@ -6,6 +6,8 @@ import Header from './components/Header.js';
 import ResponsiveDrawer from './components/Drawer.js';
 import CarouselTable from './components/CarouselTable.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import MyFooter from './components/Footer.js';
+import Home from './components/Home.js';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

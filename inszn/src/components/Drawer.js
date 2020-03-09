@@ -17,7 +17,13 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory
+} from "react-router-dom";
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -29,6 +35,8 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    backgroundColor: "#7ecb20"
+
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -80,7 +88,6 @@ export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -128,14 +135,23 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </div>
         <Divider />
-        <List>
-          {['Home', 'Request'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        <Router>
+          <List>
+            <Link to="/">
+              <ListItem button key="Home" href="/">
+                <ListItemIcon><InboxIcon /></ListItemIcon>
+                <ListItemText primary="Home" />
+                </ListItem>
+            </Link>
+            <Link to="/request">
+            <ListItem button key="Request" href="/request">
+              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText primary="Request" />
+              </ListItem>
+            </Link>
+            
+          </List>
+        </Router>
         <Divider />
         <List>
           {['Help'].map((text, index) => (
