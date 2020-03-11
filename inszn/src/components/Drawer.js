@@ -135,10 +135,9 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </div>
         <Divider />
-        <Router>
           <List>
             <Link to="/">
-              <ListItem button key="Home" href="/">
+              <ListItem button key="Home" >
                 <ListItemIcon><InboxIcon /></ListItemIcon>
                 <ListItemText primary="Home" />
                 </ListItem>
@@ -151,15 +150,14 @@ export default function PersistentDrawerLeft() {
             </Link>
             
           </List>
-        </Router>
         <Divider />
         <List>
-          {['Help'].map((text, index) => (
-            <ListItem button key={text}>
+            <Link to="/about">
+            <ListItem button key="About">
               <ListItemIcon><InboxIcon /></ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary="About" />
             </ListItem>
-          ))}
+            </Link>
         </List>
       </Drawer>
       <main

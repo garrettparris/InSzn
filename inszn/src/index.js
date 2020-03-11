@@ -8,6 +8,7 @@ import CarouselTable from './components/CarouselTable.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyFooter from './components/Footer.js';
 import Home from './components/Home.js';
+import Request from './components/Request.js'
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

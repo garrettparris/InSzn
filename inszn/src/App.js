@@ -4,6 +4,7 @@ import ResponsiveDrawer from './components/Drawer.js';
 import CarouselTable from './components/CarouselTable.js';
 import MyFooter from './components/Footer.js';
 import Home from './components/Home.js';
+import Request from './components/Request.js'
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,11 +15,12 @@ import {
 function App() {
   return (
     <div className="App">
+            <Router>
+
       <ResponsiveDrawer />
-      <Router>
       <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/request" component={Header} />
+          <Route exact path="/request" component={Request} />
         <Route exact path="/about">
           
         </Route>
