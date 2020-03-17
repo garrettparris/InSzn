@@ -129,7 +129,7 @@ class CarouselTable extends React.Component{
             
             <div className="m-5  rounded" style = {style}>
                 <Header></Header>
-                <Carousel interval={null} className="text-center p-3" activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect} indicators={false}>
+                <Carousel interval={null} className="text-center mt-1 mb-1 mx-auto w-50" activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect} indicators={false}>
                 <Carousel.Item>
                     <div>January</div>
                     
@@ -179,7 +179,7 @@ class CarouselTable extends React.Component{
                     
                 </Carousel.Item>
                 </Carousel>
-                <Carousel interval = {null} className="mx-auto text-center w-50 mt-5" controls="true" indicators = "false" activeIndex={this.state.typeIndex} direction={this.state.typeDirection} onSelect={this.handleTypeSelect} indicators={false}>
+                <Carousel interval = {null} className="mx-auto text-center w-50 mt-4" controls="true" indicators = "false" activeIndex={this.state.typeIndex} direction={this.state.typeDirection} onSelect={this.handleTypeSelect} indicators={false}>
                     <Carousel.Item className="mx-auto">
                         <div>Fruits</div>
                         

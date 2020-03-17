@@ -15,8 +15,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import HomeIcon from '@material-ui/icons/Home';
+import InfoIcon from '@material-ui/icons/Info';
 import {
   BrowserRouter as Router,
   Switch,
@@ -48,6 +49,7 @@ const useStyles = makeStyles(theme => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    outline: 'none'
   },
   hide: {
     display: 'none',
@@ -99,27 +101,7 @@ export default function PersistentDrawerLeft() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      {/* <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            In Szn
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
+      
       <Toolbar>
           <IconButton
             color="inherit"
@@ -151,13 +133,13 @@ export default function PersistentDrawerLeft() {
           <List>
             <Link to="/">
               <ListItem button key="Home" >
-                <ListItemIcon><InboxIcon /></ListItemIcon>
+                <ListItemIcon><HomeIcon /></ListItemIcon>
                 <ListItemText  primary={<Typography  style={{ color: 'black', textDecoration: "none" }}>Home</Typography>} />
                 </ListItem>
             </Link>
             <Link to="/request">
             <ListItem button key="Request" href="/request">
-              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemIcon><MailIcon /></ListItemIcon>
               <ListItemText primary={<Typography  style={{ color: 'black', textDecoration: "none" }}>Request</Typography>} />
               </ListItem>
             </Link>
@@ -167,7 +149,7 @@ export default function PersistentDrawerLeft() {
         <List>
             <Link to="/about">
             <ListItem button key="About">
-              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemIcon><InfoIcon /></ListItemIcon>
               <ListItemText primary={<Typography  style={{ color: 'black', textDecoration: "none" }}>About</Typography>} />
             </ListItem>
             </Link>
