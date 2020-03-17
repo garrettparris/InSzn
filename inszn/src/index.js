@@ -10,7 +10,7 @@ import MyFooter from './components/Footer.js';
 import Home from './components/Home.js';
 import Request from './components/Request.js'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render([<App key ="1"/>,<MyFooter key = "2" />], document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

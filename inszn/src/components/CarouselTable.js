@@ -3,6 +3,10 @@ import Carousel from 'react-bootstrap/Carousel'
 import SimpleTable from './Table.js'
 import Skeleton from '@material-ui/lab/Skeleton';
 import axios from 'axios'
+import Particles from 'react-particles-js'; 
+import { withTheme } from '@material-ui/core';
+import Header from './Header.js'
+import MyFooter from './Footer.js';
 
 class CarouselTable extends React.Component{
     constructor(props) {
@@ -48,7 +52,7 @@ class CarouselTable extends React.Component{
 
     callAPI() {
         try {
-            var url = "http://ec2-52-14-94-175.us-east-2.compute.amazonaws.com:3000/api/" + (this.state.index+1) + "/" + this.typeValues[this.state.typeIndex]
+            var url = "http://localhost:4000/api/" + (this.state.index+1) + "/" + this.typeValues[this.state.typeIndex]
 
             axios.get(url)
                 .then(res => {
@@ -83,10 +87,49 @@ class CarouselTable extends React.Component{
         }
         
     }
-    render(){
+    render() {
+        const style = {
+            backgroundColor: "#f8bbd0"
+        }
         return (
-            <div>
-                <Carousel interval={null} className="mx-auto text-center" activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect} indicators={false}>
+            
+            <div className="mx-auto w-100 h-100">
+<Particles
+                    style={{
+                        position: "absolute",
+                        top: 0,
+                        zIndex: -9,
+                        left:0,
+                        height: "100%",
+                        width: "100%"
+                    }
+                }
+                params={{ 
+                particles: { 
+                    number: { 
+                    value: 200, 
+                    density: { 
+                        enable: true, 
+                        value_area: 1000, 
+              } 
+                        }, 
+                    
+                        line_linked: {
+            				shadow: {
+            					enable: true,
+            					color: "#7cb342",
+            					blur: 2
+            				}
+            			}
+                    },
+                    
+                    
+        }} 
+                /> 
+            
+            <div className="m-5  rounded" style = {style}>
+                <Header></Header>
+                <Carousel interval={null} className="text-center p-3" activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect} indicators={false}>
                 <Carousel.Item>
                     <div>January</div>
                     
@@ -160,7 +203,11 @@ class CarouselTable extends React.Component{
 
                         )}
                 </div>
-            </div>
+                </div>
+                <div className= "w-100 h-100">
+            
+                </div>
+                </div>
             
 
         );

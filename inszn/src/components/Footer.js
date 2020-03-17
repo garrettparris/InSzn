@@ -1,29 +1,25 @@
 import React, { Component } from 'react';
-import Footer from 'rc-footer';
-import 'rc-footer/assets/index.css'; // import 'rc-footer/asssets/index.less';
+import StickyFooter from 'react-sticky-footer';
+
 class MyFooter extends React.Component{
     
     render() {
+        // bottom=""
         const style = {
-            height: ""
+            flexShrink: 0,
+            textAlign: "center",
+            backgroundColor: "black",
+            color: "white",
+            position: "fixed",
+            bottom: 0,
+            width: "100%",
+            
         }
         return(
-            <div style={style}>
-                <Footer
-                    style= {style}
-                columns={[
-                    {
-                    icon: (
-                    <img src="https://gw.alipayobjects.com/zos/rmsportal/XuVpGqBFxXplzvLjJBZB.svg" />
-                    ),
-                    title: '语雀',
-                    url: 'https://yuque.com',
-                    description: '知识创作与分享工具',
-                    openExternal: true,
-                },
-                ]}
-                bottom="Made with ❤️ by Garrett Parris"
-            />,
+            <div>
+                <footer style={style}>
+                    <p>Made with ❤️ by Garrett Parris</p>
+               </footer>
             </div>
         );
     }

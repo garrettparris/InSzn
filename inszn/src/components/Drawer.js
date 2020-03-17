@@ -99,7 +99,7 @@ export default function PersistentDrawerLeft() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
+      {/* <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
@@ -119,7 +119,18 @@ export default function PersistentDrawerLeft() {
             In Szn
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
+      <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            className={clsx(classes.menuButton, open && classes.hide)}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -129,23 +140,25 @@ export default function PersistentDrawerLeft() {
           paper: classes.drawerPaper,
         }}
       >
+
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
+        
         <Divider />
           <List>
             <Link to="/">
               <ListItem button key="Home" >
                 <ListItemIcon><InboxIcon /></ListItemIcon>
-                <ListItemText primary="Home" />
+                <ListItemText  primary={<Typography  style={{ color: 'black', textDecoration: "none" }}>Home</Typography>} />
                 </ListItem>
             </Link>
             <Link to="/request">
             <ListItem button key="Request" href="/request">
               <ListItemIcon><InboxIcon /></ListItemIcon>
-              <ListItemText primary="Request" />
+              <ListItemText primary={<Typography  style={{ color: 'black', textDecoration: "none" }}>Request</Typography>} />
               </ListItem>
             </Link>
             
@@ -155,7 +168,7 @@ export default function PersistentDrawerLeft() {
             <Link to="/about">
             <ListItem button key="About">
               <ListItemIcon><InboxIcon /></ListItemIcon>
-              <ListItemText primary="About" />
+              <ListItemText primary={<Typography  style={{ color: 'black', textDecoration: "none" }}>About</Typography>} />
             </ListItem>
             </Link>
         </List>

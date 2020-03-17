@@ -7,7 +7,6 @@ class Home extends React.Component{
     render(){
         return(
             <div className="mx-auto mt-5">
-            <div className="mt-5 mx-auto w-75"><Header /></div>
             <div className="mt-5 mx-auto w-50"><CarouselTable /></div>
             {/* <div className="mt-5 mx-auto h-auto"><MyFooter /></div> */}
             </div>
