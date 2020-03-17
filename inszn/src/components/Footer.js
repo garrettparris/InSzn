@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import StickyFooter from 'react-sticky-footer';
+import React from 'react';
 
 class MyFooter extends React.Component{
     
     render() {
-        // bottom=""
         const style = {
             flexShrink: 0,
             textAlign: "center",

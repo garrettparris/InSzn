@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from './Header.js';
-import ResponsiveDrawer from './Drawer.js';
-import CarouselTable from './CarouselTable.js';
-import MyFooter from './Footer.js';
-import Particles from 'react-particles-js'; 
-import { Form, Input, InputNumber, Button } from 'antd';
+
+import { Form} from 'antd';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/icons/Send';
 import TextField from '@material-ui/core/TextField';
 
 import axios from 'axios';
@@ -14,18 +13,20 @@ const layout = {
     wrapperCol: { span: 16 },
   };
   
-  const validateMessages = {
+const validateMessages = {
     required: 'This field is required!',
 };
 const style = {
-    backgroundColor: "#f8bbd0",
+  backgroundColor: "white",
+  opacity: 0.7,
+  height: "60%",
+  border: "solid 5px",
+  borderColor:"#f8bbd0"
 }
 const formStyle = {
-  backgroundColor: "white",
-  marginLeft: "25%",
-  marginRight: "25%",
-  border: "solid 1px",
-  borderColor:"#757575"
+  marginLeft: "2%",
+  marginRight: "2%",
+ 
 }
 
 class Request extends React.Component{  
@@ -74,79 +75,50 @@ class Request extends React.Component{
     
         return(
             <div className="mx-auto w-100 h-100" >
-                <Particles
-                    style={{
-                        position: "absolute",
-                        top: 0,
-                        zIndex: -9,
-                        left:0,
-                        height: "100%",
-                        width: "100%"
-                    }
-                }
-                params={{ 
-                particles: { 
-                    number: { 
-                    value: 200, 
-                    density: { 
-                        enable: true, 
-                        value_area: 1000, 
-              } 
-                        }, 
-                    
-                        line_linked: {
-            				shadow: {
-            					enable: true,
-            					color: "#7cb342",
-            					blur: 2
-            				}
-            			}
-                    },
-                    
-                    
-        }} 
-                /> 
-
-
-            <div className="mx-auto text-center w-50 justify-content-center
-                 rounded " style={style}>
               <Header />
+              <div className="mx-auto text-center m-5 pt-3 rounded w-50" style={style}>
               <div className="text-dark  m-3">
                 <p>Don't see a fruit or vegetable listed? Let me know by requesting it below!</p>
               </div>
-              <div style={formStyle} className="p-3  rounded">
-              <Form {...layout} name="nest-messages" className="text-dark"onFinish={onFinish} validateMessages={validateMessages}>
-      <Form.Item name={['user', 'name']} >
-      <TextField id="outlined-basic" label="Name" variant="outlined" />
-    </Form.Item>
-      <Form.Item name={['user', 'email']}  className="mt-3 text-dark" >
-      <TextField id="outlined-basic" label="Email" variant="outlined" />
-   </Form.Item>
-
-      <Form.Item name={['user', 'message']}  className="mt-3">
-        <TextField
-          id="outlined-multiline-static"
-          label="Message"
-          multiline
-          rows="3"
-          variant="outlined"
-                    />
-        </Form.Item>
-      <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }} >
-        <Button type="primary" htmlType="submit" className="mb-3">
-          Submit
-        </Button>
-      </Form.Item>
-                </Form>
-                <div className="text-danger">
-              
-            {this.state.errors.map((row, index) => (
-                            <div className="mx-auto text-center" key={row.param + index} >
-                            {row.msg }
-                          </div>
-                    ))}
-            </div>
-                </div>
+              <div style={formStyle} className="p-3 rounded">
+                <Form {...layout} name="nest-messages" className="text-dark"onFinish={onFinish} validateMessages={validateMessages}>
+                    <Form.Item name={['user', 'name']} >
+                      <TextField id="outlined-basic" label="Name" variant="outlined" className="w-50 rounded" />
+                    </Form.Item>
+                    <Form.Item name={['user', 'email']}  className="mt-3 text-dark" >
+                      <TextField id="outlined-basic" label="Email" variant="outlined" className="w-50 rounded" />
+                    </Form.Item>
+                    <Form.Item name={['user', 'message']}  className="mt-3">
+                      <TextField  
+                        id="outlined-multiline-static"
+                        label="Message"
+                        multiline
+                        rows="3"
+                        variant="outlined"
+                        className="w-50"
+                      />
+                    </Form.Item>
+                    <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }} className="mt-2" >
+                      <Button
+                        type="primary"
+                        color="primary"
+                        style={{backgroundColor: "#f8bbd0", color: "white", width: '10vw'}}
+                        endIcon={<Icon>send</Icon>}
+                        htmlType="submit"
+                      >
+                        Send
+                       </Button>
+ 
+                    </Form.Item>
+                  </Form>
+                  <div className="text-danger">
+                    {this.state.errors.map((row, index) => (
+                                    <div className="mx-auto text-center" key={row.param + index} >
+                                    {row.msg }
+                                  </div>
+                            ))}
+                    </div>
+              </div>
               <div className="p-1"></div>
             </div>
             

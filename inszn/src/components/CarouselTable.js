@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Carousel from 'react-bootstrap/Carousel'
 import SimpleTable from './Table.js'
 import Skeleton from '@material-ui/lab/Skeleton';
 import axios from 'axios'
-import Particles from 'react-particles-js'; 
-import { withTheme } from '@material-ui/core';
 import Header from './Header.js'
-import MyFooter from './Footer.js';
 
 class CarouselTable extends React.Component{
     constructor(props) {
@@ -89,124 +86,117 @@ class CarouselTable extends React.Component{
     }
     render() {
         const style = {
-            backgroundColor: "#f8bbd0"
+
+            backgroundColor: "white",
+            opacity: 0.7,
+            height: "60vh",
+            border: "solid 5px",
+            borderColor:"#f8bbd0"
         }
         return (
             
             <div className="mx-auto w-100 h-100">
-<Particles
-                    style={{
-                        position: "absolute",
-                        top: 0,
-                        zIndex: -9,
-                        left:0,
-                        height: "100%",
-                        width: "100%"
-                    }
-                }
-                params={{ 
-                particles: { 
-                    number: { 
-                    value: 200, 
-                    density: { 
-                        enable: true, 
-                        value_area: 1000, 
-              } 
-                        }, 
-                    
-                        line_linked: {
-            				shadow: {
-            					enable: true,
-            					color: "#7cb342",
-            					blur: 2
-            				}
-            			}
-                    },
-                    
-                    
-        }} 
-                /> 
-            
-            <div className="m-5  rounded" style = {style}>
+
                 <Header></Header>
-                <Carousel interval={null} className="text-center mt-1 mb-1 mx-auto w-50" activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect} indicators={false}>
-                <Carousel.Item>
-                    <div>January</div>
-                    
-                </Carousel.Item>
-                <Carousel.Item>
-                    February
-                    
-                </Carousel.Item>
-                <Carousel.Item>
-                    March
-                    
-                </Carousel.Item>
-                <Carousel.Item>
-                    April
-                    
-                </Carousel.Item>
-                <Carousel.Item>
-                    May
-                    
-                </Carousel.Item>
-                <Carousel.Item>
-                    June
-                    
-                </Carousel.Item>
-                <Carousel.Item>
-                    July
-                    
-                </Carousel.Item>
-                <Carousel.Item>
-                    August
-                    
-                </Carousel.Item>
-                <Carousel.Item>
-                    September
-                    
-                </Carousel.Item>
-                <Carousel.Item>
-                    October
-                    
-                </Carousel.Item>
-                <Carousel.Item>
-                    November
-                   
-                </Carousel.Item>
-                <Carousel.Item>
-                    December
-                    
-                </Carousel.Item>
-                </Carousel>
-                <Carousel interval = {null} className="mx-auto text-center w-50 mt-4" controls="true" indicators = "false" activeIndex={this.state.typeIndex} direction={this.state.typeDirection} onSelect={this.handleTypeSelect} indicators={false}>
-                    <Carousel.Item className="mx-auto">
-                        <div>Fruits</div>
+
+                <div className=" mx-auto m-5 pt-3 rounded w-50" style = {style}>
+                        <Carousel
+                            interval={null}
+                            className="text-center mb-1 mx-auto w-50"
+                            style={{ opacity: '1 !important', marginTop: '2%' }}
+                            activeIndex={this.state.index}
+                            direction={this.state.direction}
+                            onSelect={this.handleSelect}
+                            indicators={false}
+                            nextIcon={<span className="fas fa-chevron-right" style={{fontSize: 30,color:'#f8bbd0'}}></span>}
+                            prevIcon={<span className="fas fa-chevron-left" style={{fontSize: 30,color:'#f8bbd0'}}></span>}
+                        >
+                    <Carousel.Item>
+                        <div>January</div>
                         
                     </Carousel.Item>
                     <Carousel.Item>
-                        Vegetables
+                        February
                         
                     </Carousel.Item>
                     <Carousel.Item>
-                        Fruits and Vegetables
+                        March
                         
                     </Carousel.Item>
+                    <Carousel.Item>
+                        April
+                        
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        May
+                        
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        June
+                        
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        July
+                        
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        August
+                        
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        September
+                        
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        October
+                        
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        November
+                    
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        December
+                        
+                    </Carousel.Item>
+                    </Carousel>
+                        <Carousel
+                            interval={null}
+                            className="mx-auto text-center w-50 mt-4"
+                            activeIndex={this.state.typeIndex}
+                            direction={this.state.typeDirection}
+                            onSelect={this.handleTypeSelect}
+                            indicators={false}
+                            nextIcon={<span className="fas fa-chevron-right" style={{fontSize: 30,color:'#f8bbd0'}}></span>}
+                            prevIcon={<span className="fas fa-chevron-left" style={{fontSize: 30,color:'#f8bbd0'}}></span>}
+                        >
+                        <Carousel.Item className="mx-auto">
+                            <div>Fruits</div>
+                            
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            Vegetables
+                            
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            Fruits and Vegetables
+                            
+                        </Carousel.Item>
 
-                </Carousel>
-                <div className="mx-auto mt-3 mb-5 w-50">
-                { this.state.names ? (
-                <SimpleTable {...this.state}></SimpleTable>
+                    </Carousel>
+                    <div className="mx-auto mt-3 mb-5 w-50">
+                    { this.state.names ? (
+                    <SimpleTable {...this.state}></SimpleTable>
 
-                ) : (
-                          <Skeleton variant="rect" className="mx-auto"/>
+                    ) : (
+                            <Skeleton variant="rect" className="mx-auto"/>
 
-                        )}
-                </div>
-                </div>
-                <div className= "w-100 h-100">
-            
-                </div>
+                            )}
+                    </div>
+                    </div>
+                    <div className= "w-100 h-100">
+                
+                    </div>
                 </div>
             
 

@@ -3,9 +3,8 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import './css/table.css'
 const mystyle = {
     color: 'white',
     fontFamily: 'Ubuntu'
@@ -22,9 +21,10 @@ class SimpleTable extends Component {
     
 
     render() {
+
         return (
             <div>
-                <TableContainer>
+                <TableContainer style={{ overflow: "scroll", height:"40vh", overflowX:"hidden"}}>
                 <Table aria-label="simple table">
                         <TableBody className="">
                     {this.props.names.map(row => (
