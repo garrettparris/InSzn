@@ -42,7 +42,7 @@ class Request extends React.Component{
       this.setState({
         errors: []
       })
-      var url = "http://localhost:4000/message"
+      var url = "http://ec2-18-223-212-204.us-east-2.compute.amazonaws.com:3000/message"
       try {
         axios({
           method: 'post',

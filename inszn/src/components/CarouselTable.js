@@ -49,7 +49,7 @@ class CarouselTable extends React.Component{
 
     callAPI() {
         try {
-            var url = "http://localhost:4000/api/" + (this.state.index+1) + "/" + this.typeValues[this.state.typeIndex]
+            var url = "http://ec2-18-223-212-204.us-east-2.compute.amazonaws.com:3000/api/" + (this.state.index+1) + "/" + this.typeValues[this.state.typeIndex]
 
             axios.get(url)
                 .then(res => {
